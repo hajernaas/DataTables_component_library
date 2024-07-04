@@ -8,8 +8,8 @@ export default defineConfig({
 	build: {
 		lib: {
 			entry: "src/lib/index.jsx",
-			name: "DataTablesLibrary",
-			fileName: (format) => `datatables-component-library".${format}.js`,
+			name: "DataTableComponentLibrary",
+			fileName: (format) => `datatable-component-library.${format}.js`,
 		},
 		rollupOptions: {
 			external: ["react", "react-dom"],

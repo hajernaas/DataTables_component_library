@@ -1,0 +1,46 @@
+/*.EmployeeTable {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+}
+*/
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table th,
+table td {
+	padding: 8px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+table th {
+	background-color: #bed175;
+	/* background-color: #e1e7c6;  */
+	color: black;
+}
+
+table th:hover {
+	cursor: pointer;
+	background-color: #ddd;
+}
+
+@media screen and (max-width: 768px) {
+	table,
+	th,
+	td {
+		font-size: 12px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	table,
+	th,
+	td {
+		font-size: 10px;
+	}
+}

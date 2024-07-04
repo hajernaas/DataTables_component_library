@@ -1,8 +1,13 @@
 {
-	"name": "datatables-component-library",
-	"version": "0.0.0",
+	"name": "datatable-component-library",
+	"version": "1.0.4",
 	"type": "module",
 	"description": "DataTables npm librairie ",
+	"main": "dist/datatable-component-library.umd.js",
+	"module": "dist/datatable-component-library.es.js",
+	"files": [
+		"dist"
+	],
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
