@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "./Table";
 import "./style.css";
 
@@ -12,7 +12,9 @@ const EmployeeTable = ({ infoEmployees }) => {
 
 	return (
 		<>
-			<Table infoEmployees={listEmployees} />
+			<div className="TableContainer">
+				<Table infoEmployees={listEmployees} />
+			</div>
 		</>
 	);
 };

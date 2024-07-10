@@ -1,6 +1,6 @@
 {
 	"name": "datatable-component-library",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"type": "module",
 	"description": "DataTables npm librairie ",
 	"main": "dist/datatable-component-library.umd.js",
@@ -30,5 +30,8 @@
 	},
 	"author": "naas hajer",
 	"license": "MIT",
-	"keywords": []
+	"keywords": [],
+	"dependencies": {
+		"date-fns": "^3.6.0"
+	}
 }

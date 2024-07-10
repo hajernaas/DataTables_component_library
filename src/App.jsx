@@ -8,9 +8,7 @@ import EmployeeTable from "./lib/dataTable/EmployeeTable";
 function App() {
 	return (
 		<div>
-			<h1>Titre1</h1>
-			{/* <HelloWorld text="salut" /> */}
-			{/* <MonComposant /> */}
+			<h1>Current Employees</h1>
 			<EmployeeTable infoEmployees={data} />
 		</div>
 	);
