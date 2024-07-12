@@ -12,13 +12,17 @@
 		"dev": "vite",
 		"build": "vite build",
 		"lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"test": "vitest --reporter verbose",
+		"coverage": "vitest run --coverage"
 	},
 	"peerDependencies": {
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
 	},
 	"devDependencies": {
+		"@testing-library/jest-dom": "^6.4.6",
+		"@testing-library/react": "^16.0.0",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
 		"@vitejs/plugin-react": "^4.3.1",
@@ -32,6 +36,11 @@
 	"license": "MIT",
 	"keywords": [],
 	"dependencies": {
-		"date-fns": "^3.6.0"
+		"@testing-library/dom": "^10.3.1",
+		"c8": "^10.1.2",
+		"date-fns": "^3.6.0",
+		"jsdom": "^24.1.0",
+		"react-test-renderer": "^18.3.1",
+		"vitest": "^2.0.2"
 	}
 }
