@@ -9,7 +9,7 @@ const EmployeeTable = ({ infoEmployees }) => {
 	//sortConfig : Utilisé pour configurer le tri des employés, avec une clé de tri (firstName)
 	//et une direction de tri (ascending).
 	const [sortConfig, setSortConfig] = useState({ key: "firstName", direction: "ascending" });
-	//Utilisé pour stocker le terme de recherche saisi par l'utilisateur.
+	//Utilisé pour stocker la valeur  de recherche saisi par l'utilisateur.
 	const [searchTerm, setSearchTerm] = useState("");
 
 	//Utilise React.useMemo pour mémoriser la liste triée des employés.Elle s'exécute lorsque infoEmployees ou sortConfig change.
@@ -33,6 +33,7 @@ const EmployeeTable = ({ infoEmployees }) => {
 					}
 				};
 
+				//pour éviter les erreurs de comparaions
 				if (aValue == null) aValue = "";
 				if (bValue == null) bValue = "";
 
@@ -52,6 +53,7 @@ const EmployeeTable = ({ infoEmployees }) => {
 				if (aValue > bValue) {
 					return sortConfig.direction === "ascending" ? 1 : -1;
 				}
+				//Egalité
 				return 0;
 			});
 		}
@@ -79,6 +81,8 @@ const EmployeeTable = ({ infoEmployees }) => {
 		)
 	);
 
+	console.log("filteredEmployees", filteredEmployees);
+
 	return (
 		<>
 			{/* le champ de recherche permet à l'utilisateur de saisir la valeur de recherche. */}
@@ -89,7 +93,7 @@ const EmployeeTable = ({ infoEmployees }) => {
 				className="Search"
 				type="text"
 				value={searchTerm}
-				onChange={(e) => setSearchTerm(e.target.value)} 
+				onChange={(e) => setSearchTerm(e.target.value)}
 			/>
 			{/* Le composant Table  reçoit les employés filtrés */}
 			{/* la configuration de tri (sortConfig), et la fonction pour mettre à jour */}
