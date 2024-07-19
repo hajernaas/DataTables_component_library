@@ -9,6 +9,8 @@ const DataTable = ({ jsonData }) => {
 
 	const [sortConfig, setSortConfig] = useState({ key: "defaultKey", direction: "ascending" });
 	const [searchTerm, setSearchTerm] = useState("");
+	const [currentPage, setCurrentPage] = useState(1);
+	const [itemsPerPage, setItemsPerPage] = useState(10);
 
 	const sortedData = React.useMemo(() => {
 		let data = [...jsonData];
@@ -71,9 +73,29 @@ const DataTable = ({ jsonData }) => {
 	);
 	console.log("filteredEmployees", filteredData);
 
+	const indexOfLastItem = currentPage * itemsPerPage;
+	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+	const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
+	const handleItemsPerPageChange = (event) => {
+		setItemsPerPage(Number(event.target.value));
+		setCurrentPage(1);
+	};
+
 	return (
 		<>
 			<div className="SearchSelectContainer">
+				<label className="SelectLabel">
+					Show
+					<select className="Select" value={itemsPerPage} onChange={handleItemsPerPageChange}>
+						<option value={10}>10</option>
+						<option value={25}>25</option>
+						<option value={50}>50</option>
+						<option value={100}>100</option>
+					</select>
+					entries
+				</label>
+
 				<input
 					type="text"
 					placeholder="Search..."
@@ -85,7 +107,7 @@ const DataTable = ({ jsonData }) => {
 			</div>
 
 			<div className="TableContainer">
-				<Table jsonData={filteredData} sortConfig={sortConfig} setSortConfig={setSortConfig} />
+				<Table jsonData={currentItems} sortConfig={sortConfig} setSortConfig={setSortConfig} />
 			</div>
 		</>
 	);
