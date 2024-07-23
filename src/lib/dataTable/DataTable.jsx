@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Table from "./Table";
+import Pagination from "./Pagination";
 import "./style.css";
 import { parse } from "date-fns";
 
@@ -73,21 +74,30 @@ const DataTable = ({ jsonData }) => {
 	);
 	console.log("filteredEmployees", filteredData);
 
+	//Détermine la position du dernier élément de la page actuelle dans le tableau de données filtrées.
 	const indexOfLastItem = currentPage * itemsPerPage;
+
+	// Détermine la position du premier élément de la page actuelle
 	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+	//Sous-liste des éléments à afficher sur la page actuelle, obtenue à l'aide de la méthode slice().
 	const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
-	const handleItemsPerPageChange = (event) => {
+	// pour gérer le changement du nombre d'éléments affichés par page
+	const updateItemsPerPage = (event) => {
 		setItemsPerPage(Number(event.target.value));
 		setCurrentPage(1);
 	};
+
+	// pour gérer le changement de la page affichée
+	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 	return (
 		<>
 			<div className="SearchSelectContainer">
 				<label className="SelectLabel">
 					Show
-					<select className="Select" value={itemsPerPage} onChange={handleItemsPerPageChange}>
+					<select className="Select" value={itemsPerPage} onChange={updateItemsPerPage}>
 						<option value={10}>10</option>
 						<option value={25}>25</option>
 						<option value={50}>50</option>
@@ -102,13 +112,19 @@ const DataTable = ({ jsonData }) => {
 					value={searchTerm}
 					className="Search"
 					onChange={(e) => setSearchTerm(e.target.value)}
-					data-testid="search-input"
 				/>
 			</div>
 
 			<div className="TableContainer">
 				<Table jsonData={currentItems} sortConfig={sortConfig} setSortConfig={setSortConfig} />
 			</div>
+
+			<Pagination
+				itemsPerPage={itemsPerPage}
+				totalItems={filteredData.length}
+				paginate={paginate}
+				currentPage={currentPage}
+			/>
 		</>
 	);
 };
