@@ -1,6 +1,6 @@
 {
 	"name": "datatable-component-library",
-	"version": "1.0.10",
+	"version": "1.0.11",
 	"type": "module",
 	"description": "DataTables npm librairie ",
 	"main": "dist/datatable-component-library.umd.js",
@@ -21,7 +21,7 @@
 		"react-dom": "^18.3.1"
 	},
 	"devDependencies": {
-		"@testing-library/jest-dom": "^6.4.6",
+		"@testing-library/jest-dom": "^6.4.8",
 		"@testing-library/react": "^16.0.0",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
@@ -31,7 +31,8 @@
 		"eslint-plugin-react": "^7.34.2",
 		"eslint-plugin-react-hooks": "^4.6.2",
 		"eslint-plugin-react-refresh": "^0.4.7",
-		"vite": "^5.3.1"
+		"vite": "^5.3.1",
+		"vitest": "^2.0.4"
 	},
 	"author": "naas hajer",
 	"license": "MIT",
@@ -41,7 +42,6 @@
 		"c8": "^10.1.2",
 		"date-fns": "^3.6.0",
 		"jsdom": "^24.1.0",
-		"react-test-renderer": "^18.3.1",
-		"vitest": "^2.0.2"
+		"react-test-renderer": "^18.3.1"
 	}
 }
