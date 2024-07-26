@@ -1,25 +1,20 @@
 import React from "react";
 import "./style.css";
-import { PaginationRange } from "./PaginationRange";
+import { PaginationRange } from "./utils.js";
 
 const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
-	//const pageNumbers = []; //Un tableau qui sera utilisé pour stocker les numéros de pages généré
-
 	// calcule le nombre total de pages nécessaires pour afficher tous les éléments, en arrondissant à l'entier supérieur.
 	const totalPages = Math.ceil(totalItems / itemsPerPage);
 
 	//Le nombre maximal de numéros de pages à afficher dans la pagination.
 	const maxPageNumbersToShow = 5;
 
-	/*	for (let i = 1; i <= totalPages; i++) {
-		pageNumbers.push(i);
-	}
-*/
 	const indexOfLastItem = currentPage * itemsPerPage;
 	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
 	// pour ajouter des points de suspension et générer  et calculer les pages à afficher
 	const paginationRange = PaginationRange(currentPage, totalPages, maxPageNumbersToShow);
+	console.log("paginationRange", paginationRange);
 
 	return (
 		<div className="PaginationContainer">

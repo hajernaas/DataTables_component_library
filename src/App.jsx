@@ -7,7 +7,7 @@ import DataTable from "./lib/dataTable/DataTable";
 
 function App() {
 	return (
-		<div>
+		<div data-testid="app-container">
 			<h1>Current Employees</h1>
 			<DataTable jsonData={data} />
 		</div>

@@ -3,6 +3,16 @@ import Table from "./Table";
 import Pagination from "./Pagination";
 import "./style.css";
 import { parse } from "date-fns";
+import { isDate } from "./utils";
+/*
+export const isDate = (date, dateFormat = "dd/MM/yyyy") => {
+	try {
+		const parsedDate = parse(date, dateFormat, new Date());
+		return !isNaN(parsedDate);
+	} catch {
+		return false;
+	}
+};*/
 
 //Ce composant affiche une table d'employés avec des fonctionnalités de tri et de recherche.
 const DataTable = ({ jsonData }) => {
@@ -23,19 +33,19 @@ const DataTable = ({ jsonData }) => {
 
 				// Format de date attendu
 				const dateFormat = "dd/MM/yyyy";
-				const isDate = (date) => {
+				/*const isDate = (date) => {
 					try {
 						const parsedDate = parse(date, dateFormat, new Date());
 						return !isNaN(parsedDate);
 					} catch {
 						return false;
 					}
-				};
+				};*/
 
 				if (aValue == null) aValue = "";
 				if (bValue == null) bValue = "";
 
-				if (isDate(aValue) && isDate(bValue)) {
+				if (isDate(aValue, dateFormat) && isDate(bValue, dateFormat)) {
 					aValue = parse(aValue, dateFormat, new Date());
 					bValue = parse(bValue, dateFormat, new Date());
 				} else {
