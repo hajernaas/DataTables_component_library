@@ -1,6 +1,6 @@
 {
 	"name": "datatable-component-library",
-	"version": "1.0.11",
+	"version": "1.0.12",
 	"type": "module",
 	"description": "DataTables npm librairie ",
 	"main": "dist/datatable-component-library.umd.js",
@@ -36,12 +36,24 @@
 	},
 	"author": "naas hajer",
 	"license": "MIT",
-	"keywords": [],
+	"keywords": [
+		"react",
+		"datatable",
+		"data-grid",
+		"table",
+		"pagination",
+		"sorting",
+		"search"
+	],
 	"dependencies": {
 		"@testing-library/dom": "^10.3.1",
 		"c8": "^10.1.2",
 		"date-fns": "^3.6.0",
 		"jsdom": "^24.1.0",
 		"react-test-renderer": "^18.3.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/hajernaas/DataTables_component_library.git"
 	}
 }
