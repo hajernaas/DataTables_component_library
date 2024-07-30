@@ -94,8 +94,9 @@ This project is licensed under the MIT License.
 If you have suggestions for how this component could be improved, or want to report a bug, open an issue! I'd love all and any contributions. For more details, check out the contributing guidelines.
 
 To get started:
-Fork the repository.
-Create a new branch for your feature or fix.
-Make your changes.
-Test your changes.
-Submit a pull request.
+
+- Fork the repository.
+- Create a new branch for your feature or fix.
+- Make your changes.
+- Test your changes.
+- Submit a pull request.
