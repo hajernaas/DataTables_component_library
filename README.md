@@ -2,7 +2,7 @@
 
 A powerful and flexible data table component for React applications. It provides sorting, filtering, pagination, and other features out-of-the-box.
 
-## Installation
+## Installation 
 
 - To install the DataTable component library, use npm:
 

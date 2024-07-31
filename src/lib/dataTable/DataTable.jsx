@@ -1,18 +1,10 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Table from "./Table";
 import Pagination from "./Pagination";
 import "./style.css";
 import { parse } from "date-fns";
 import { isDate } from "./utils";
-/*
-export const isDate = (date, dateFormat = "dd/MM/yyyy") => {
-	try {
-		const parsedDate = parse(date, dateFormat, new Date());
-		return !isNaN(parsedDate);
-	} catch {
-		return false;
-	}
-};*/
 
 //Ce composant affiche une table d'employés avec des fonctionnalités de tri et de recherche.
 const DataTable = ({ jsonData }) => {
@@ -33,14 +25,6 @@ const DataTable = ({ jsonData }) => {
 
 				// Format de date attendu
 				const dateFormat = "dd/MM/yyyy";
-				/*const isDate = (date) => {
-					try {
-						const parsedDate = parse(date, dateFormat, new Date());
-						return !isNaN(parsedDate);
-					} catch {
-						return false;
-					}
-				};*/
 
 				if (aValue == null) aValue = "";
 				if (bValue == null) bValue = "";
@@ -105,9 +89,13 @@ const DataTable = ({ jsonData }) => {
 	return (
 		<>
 			<div className="SearchSelectContainer">
-				<label className="SelectLabel">
+				<label htmlFor="itemsPerPage" className="SelectLabel">
 					Show
-					<select className="Select" value={itemsPerPage} onChange={updateItemsPerPage}>
+					<select
+						id="itemsPerPage"
+						className="Select"
+						value={itemsPerPage}
+						onChange={updateItemsPerPage}>
 						<option value={10}>10</option>
 						<option value={25}>25</option>
 						<option value={50}>50</option>
@@ -122,6 +110,8 @@ const DataTable = ({ jsonData }) => {
 					value={searchTerm}
 					className="Search"
 					onChange={(e) => setSearchTerm(e.target.value)}
+					aria-label="Search data"
+					role="searchbox"
 				/>
 			</div>
 
@@ -137,6 +127,10 @@ const DataTable = ({ jsonData }) => {
 			/>
 		</>
 	);
+};
+
+DataTable.propTypes = {
+	jsonData: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default DataTable;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Table = ({ jsonData, sortConfig, setSortConfig }) => {
 	//Extrait les en-têtes de colonnes d'un tableau de données au format JSON
@@ -23,13 +24,13 @@ const Table = ({ jsonData, sortConfig, setSortConfig }) => {
 	};
 
 	return (
-		<table className="table">
+		<table className="table" aria-label="DataTable">
 			<thead>
 				<tr>
 					{/* Il affiche les en-têtes de colonnes basés sur un tableau d'en-têtes filtrés et 
 					permet de trier les données en cliquant sur ces en-têtes. */}
 					{filteredHeaders.map((header, index) => (
-						<th key={index} onClick={() => sortByField(header)}>
+						<th key={index} onClick={() => sortByField(header)} role="columnheader">
 							{header} {renderSortIcon(header)}
 						</th>
 					))}
@@ -50,4 +51,14 @@ const Table = ({ jsonData, sortConfig, setSortConfig }) => {
 	);
 };
 
+Table.propTypes = {
+	jsonData: PropTypes.arrayOf(
+		PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]))
+	).isRequired,
+	sortConfig: PropTypes.shape({
+		key: PropTypes.string,
+		direction: PropTypes.oneOf(["ascending", "descending"]),
+	}),
+	setSortConfig: PropTypes.func.isRequired,
+};
 export default Table;

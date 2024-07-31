@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import PropTypes from "prop-types";
 import { PaginationRange } from "./utils.js";
 
 const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
@@ -24,29 +25,48 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
 					totalItems
 				)} of ${totalItems} entries`}
 			</div>
-			<ul className="Pagination">
+			<ul className="Pagination" role="navigation" aria-label="Pagination">
 				<li>
-					<button onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
+					<button
+						onClick={() => paginate(currentPage - 1)}
+						disabled={currentPage === 1}
+						aria-label="Previous Page">
 						Précédent
 					</button>
 				</li>
 				{paginationRange.map((number, index) => (
 					<li key={index} className={currentPage === number ? "active" : ""}>
 						{number === "..." ? (
-							<span className="ellipsis">...</span>
+							<span className="ellipsis" aria-hidden="true">
+								...
+							</span>
 						) : (
-							<button onClick={() => paginate(number)}>{number}</button>
+							<button
+								onClick={() => paginate(number)}
+								aria-current={currentPage === number ? "page" : undefined}>
+								{number}
+							</button>
 						)}
 					</li>
 				))}
 				<li>
-					<button onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages}>
+					<button
+						onClick={() => paginate(currentPage + 1)}
+						disabled={currentPage === totalPages}
+						aria-label="Next Page">
 						Suivant
 					</button>
 				</li>
 			</ul>
 		</div>
 	);
+};
+
+Pagination.propTypes = {
+	itemsPerPage: PropTypes.number.isRequired,
+	totalItems: PropTypes.number.isRequired,
+	paginate: PropTypes.func.isRequired,
+	currentPage: PropTypes.number.isRequired,
 };
 
 export default Pagination;

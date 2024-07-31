@@ -140,11 +140,11 @@ table th:hover {
 	font-weight: 500;
 	transition: border-color 0.25s;
 }
-
+/*
 .Pagination li button:hover {
 	background-color: #ddd;
 }
-
+*/
 .Pagination li button:disabled {
 	cursor: not-allowed;
 	background-color: #e9ecef;
@@ -153,7 +153,10 @@ table th:hover {
 .Pagination li.active button {
 	background-color: #73832c;
 	color: white;
-	border-color: #73832c;
+}
+
+.Pagination li.active button:focus {
+	outline: 3px solid #9b6f42;
 }
 
 .Pagination .Ellipsis {
