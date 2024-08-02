@@ -7,7 +7,7 @@ import { parse } from "date-fns";
 import { isDate } from "./utils";
 
 /**
- * Composant affichant une table d'employés avec des fonctionnalités de tri et de recherche.
+ * Composant affichant une table des données avec des fonctionnalités de tri et de recherche.
  *
  * @param {Object} props - Les propriétés du composant.
  * @param {Array<Object>} props.jsonData - Les données JSON à afficher dans la table. Chaque objet représente une ligne de la table.
@@ -15,8 +15,6 @@ import { isDate } from "./utils";
  */
 
 const DataTable = ({ jsonData }) => {
-	console.log("Initial Data:", jsonData);
-
 	const [sortConfig, setSortConfig] = useState({ key: "defaultKey", direction: "ascending" });
 	const [searchTerm, setSearchTerm] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
@@ -53,7 +51,7 @@ const DataTable = ({ jsonData }) => {
 				return 0;
 			});
 		}
-		console.log("Sorted Data:", data);
+
 		return data;
 	}, [jsonData, sortConfig]);
 
@@ -86,17 +84,17 @@ const DataTable = ({ jsonData }) => {
 	//Sous-liste des éléments à afficher sur la page actuelle, obtenue à l'aide de la méthode slice().
 	const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
-	// pour gérer le changement du nombre d'éléments affichés par page
+	// Pour gérer le changement du nombre d'éléments affichés par page
 	const updateItemsPerPage = (event) => {
 		setItemsPerPage(Number(event.target.value));
 		setCurrentPage(1);
 	};
 
-	// pour gérer le changement de la page affichée
+	// Pour gérer le changement de la page affichée
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 	return (
-		<div id="datatable-container" data-testid="datatable-container">
+		<>
 			<div className="SearchSelectContainer">
 				<label htmlFor="itemsPerPage" className="SelectLabel">
 					Show
@@ -134,7 +132,7 @@ const DataTable = ({ jsonData }) => {
 				paginate={paginate}
 				currentPage={currentPage}
 			/>
-		</div>
+		</>
 	);
 };
 

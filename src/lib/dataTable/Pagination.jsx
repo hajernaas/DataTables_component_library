@@ -15,7 +15,7 @@ import { PaginationRange } from "./utils.js";
  */
 
 const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
-	// calcule le nombre total de pages nécessaires pour afficher tous les éléments, en arrondissant à l'entier supérieur.
+	// Calculer le nombre total de pages nécessaires pour afficher tous les éléments, en arrondissant à l'entier supérieur.
 	const totalPages = Math.ceil(totalItems / itemsPerPage);
 
 	//Le nombre maximal de numéros de pages à afficher dans la pagination.
@@ -24,7 +24,7 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
 	const indexOfLastItem = currentPage * itemsPerPage;
 	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
-	// pour ajouter des points de suspension et générer  et calculer les pages à afficher
+	//Pour ajouter des points de suspension et générer  et calculer les pages à afficher
 	const paginationRange = PaginationRange(currentPage, totalPages, maxPageNumbersToShow);
 	console.log("paginationRange", paginationRange);
 
@@ -36,39 +36,41 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
 					totalItems
 				)} of ${totalItems} entries`}
 			</div>
-			<ul className="Pagination" role="navigation" aria-label="Pagination">
-				<li>
-					<button
-						onClick={() => paginate(currentPage - 1)}
-						disabled={currentPage === 1}
-						aria-label="Previous Page">
-						Précédent
-					</button>
-				</li>
-				{paginationRange.map((number, index) => (
-					<li key={index} className={currentPage === number ? "active" : ""}>
-						{number === "..." ? (
-							<span className="ellipsis" aria-hidden="true">
-								...
-							</span>
-						) : (
-							<button
-								onClick={() => paginate(number)}
-								aria-current={currentPage === number ? "page" : undefined}>
-								{number}
-							</button>
-						)}
+			<nav role="navigation" aria-label="Pagination">
+				<ul className="Pagination">
+					<li>
+						<button
+							onClick={() => paginate(currentPage - 1)}
+							disabled={currentPage === 1}
+							aria-label="Previous Page">
+							Précédent
+						</button>
 					</li>
-				))}
-				<li>
-					<button
-						onClick={() => paginate(currentPage + 1)}
-						disabled={currentPage === totalPages}
-						aria-label="Next Page">
-						Suivant
-					</button>
-				</li>
-			</ul>
+					{paginationRange.map((number, index) => (
+						<li key={index} className={currentPage === number ? "active" : ""}>
+							{number === "..." ? (
+								<span className="ellipsis" aria-hidden="true">
+									...
+								</span>
+							) : (
+								<button
+									onClick={() => paginate(number)}
+									aria-current={currentPage === number ? "page" : undefined}>
+									{number}
+								</button>
+							)}
+						</li>
+					))}
+					<li>
+						<button
+							onClick={() => paginate(currentPage + 1)}
+							disabled={currentPage === totalPages}
+							aria-label="Next Page">
+							Suivant
+						</button>
+					</li>
+				</ul>
+			</nav>
 		</div>
 	);
 };

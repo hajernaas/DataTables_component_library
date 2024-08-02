@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 /**
@@ -16,13 +16,9 @@ import PropTypes from "prop-types";
 const Table = ({ jsonData, sortConfig, setSortConfig }) => {
 	//Extrait les en-têtes de colonnes d'un tableau de données au format JSON
 	const headers = jsonData.length > 0 ? Object.keys(jsonData[0]) : []; //Récupère les  noms des propriétés du premier objet du tableau jsonData.
+
 	//Le nouveau tableau contenant les en-têtes filtrés, sans l'en-tête "id".
 	const filteredHeaders = headers.filter((header) => header !== "id");
-
-	//Mémorisation des en-têtes de colonnes pour assurer l'ordre constant
-	/*const filteredHeaders = useMemo(() => {
-		return jsonData.length > 0 ? Object.keys(jsonData[0]).filter((header) => header !== "id") : [];
-	}, [jsonData]);*/
 
 	//Fonction pour définir la clé de tri et la direction. Si le tri est déjà appliqué à la même colonne en ordre croissant, il passe en ordre décroissant.
 	const sortByField = (key) => {
@@ -33,21 +29,20 @@ const Table = ({ jsonData, sortConfig, setSortConfig }) => {
 		setSortConfig({ key, direction });
 	};
 
-	//pour afficher un indicateur de tri (une flèche vers le haut ou vers le bas) en fonction de la configuration de tri actuelle dans une table
+	//Pour afficher un indicateur de tri (une flèche vers le haut ou vers le bas) en fonction de la configuration de tri actuelle dans une table
 	const renderSortIcon = (key) => {
 		if (!sortConfig || sortConfig.key !== key) return null;
 		return sortConfig.direction === "ascending" ? "▲" : "▼";
 	};
 
 	return (
-		<table className="table" aria-label="DataTable" data-testid="mock-table">
+		<table className="table" aria-label="DataTable">
 			<thead>
 				<tr>
-					{/* Il affiche les en-têtes de colonnes basés sur un tableau d'en-têtes filtrés et 
-					permet de trier les données en cliquant sur ces en-têtes. */}
+					{/* Afficher les en-têtes de colonnes basés sur un tableau d'en-têtes filtrés et 
+					permettre de trier les données en cliquant sur ces en-têtes. */}
 					{filteredHeaders.map((header) => (
 						<th key={header} onClick={() => sortByField(header)} role="columnheader">
-							{/* {header} {renderSortIcon(header)} */}
 							<span>{header}</span>
 							<span className="sort-icon">{renderSortIcon(header)}</span>
 						</th>
@@ -56,11 +51,10 @@ const Table = ({ jsonData, sortConfig, setSortConfig }) => {
 			</thead>
 
 			<tbody>
-				{/* pour générer dynamiquement les lignes d'un tableau */}
+				{/* Pour générer dynamiquement les lignes d'un tableau */}
 				{jsonData.map((item) => (
 					<tr key={item.id}>
 						{filteredHeaders.map((header) => (
-							// <td key={header}>{item[header]}</td>
 							<td key={`${item.id}-${header}`}>{item[header]}</td>
 						))}
 					</tr>
