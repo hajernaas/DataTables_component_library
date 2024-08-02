@@ -3,6 +3,17 @@ import "./style.css";
 import PropTypes from "prop-types";
 import { PaginationRange } from "./utils.js";
 
+/**
+ * Composant de pagination affichant des boutons pour naviguer entre les pages.
+ *
+ * @param {Object} props - Les propriétés du composant.
+ * @param {number} props.itemsPerPage - Le nombre d'éléments affichés par page.
+ * @param {number} props.totalItems - Le nombre total d'éléments à paginer.
+ * @param {Function} props.paginate - La fonction pour changer la page actuelle.
+ * @param {number} props.currentPage - La page actuellement affichée.
+ * @returns {JSX.Element} Le composant Pagination.
+ */
+
 const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
 	// calcule le nombre total de pages nécessaires pour afficher tous les éléments, en arrondissant à l'entier supérieur.
 	const totalPages = Math.ceil(totalItems / itemsPerPage);

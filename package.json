@@ -1,6 +1,6 @@
 {
 	"name": "datatable-component-library",
-	"version": "1.0.15",
+	"version": "1.0.19",
 	"type": "module",
 	"description": "DataTables npm librairie ",
 	"main": "dist/datatable-component-library.umd.js",
@@ -31,6 +31,7 @@
 		"eslint-plugin-react": "^7.34.2",
 		"eslint-plugin-react-hooks": "^4.6.2",
 		"eslint-plugin-react-refresh": "^0.4.7",
+		"jsdoc": "^4.0.3",
 		"vite": "^5.3.1",
 		"vitest": "^2.0.4"
 	},

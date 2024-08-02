@@ -56,16 +56,34 @@ table td {
 	padding: 8px;
 	text-align: left;
 	border-bottom: 1px solid #ddd;
-	/* font-size: 14px; */
 }
 
 table th {
 	background-color: #bed175;
 	color: black;
+	/* width: 135px; */
+}
+/*
+.header-text {
+	display: inline-block;
+}
+.sort-icon {
+	display: inline-block;
+	margin-left: 5px;
+	font-size: 12px;
+	vertical-align: middle;
+}*/
+
+.sort-icon {
+	margin-left: 5px;
+	font-size: 12px;
 }
 
+.table tr:nth-child(even) {
+	background-color: #f9f9f9;
+}
 table th:hover {
-	cursor: pointer;
+	/* cursor: pointer; */
 	background-color: #73832c;
 }
 

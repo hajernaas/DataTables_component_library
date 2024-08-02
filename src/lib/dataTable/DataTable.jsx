@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Table from "./Table";
 import Pagination from "./Pagination";
@@ -6,9 +6,16 @@ import "./style.css";
 import { parse } from "date-fns";
 import { isDate } from "./utils";
 
-//Ce composant affiche une table d'employés avec des fonctionnalités de tri et de recherche.
+/**
+ * Composant affichant une table d'employés avec des fonctionnalités de tri et de recherche.
+ *
+ * @param {Object} props - Les propriétés du composant.
+ * @param {Array<Object>} props.jsonData - Les données JSON à afficher dans la table. Chaque objet représente une ligne de la table.
+ * @returns {JSX.Element} Le composant DataTable.
+ */
+
 const DataTable = ({ jsonData }) => {
-	console.log("employeesTable", jsonData);
+	console.log("Initial Data:", jsonData);
 
 	const [sortConfig, setSortConfig] = useState({ key: "defaultKey", direction: "ascending" });
 	const [searchTerm, setSearchTerm] = useState("");
@@ -46,11 +53,9 @@ const DataTable = ({ jsonData }) => {
 				return 0;
 			});
 		}
-
+		console.log("Sorted Data:", data);
 		return data;
 	}, [jsonData, sortConfig]);
-
-	console.log("sortedEmployees", sortedData);
 
 	const normalizeValue = (value) =>
 		value
@@ -60,13 +65,17 @@ const DataTable = ({ jsonData }) => {
 			.normalize("NFD")
 			.replace(/[\u0300-\u036f]/g, "");
 
-	const filteredData = sortedData.filter((employee) =>
-		Object.values(employee).some(
+	const filteredData = sortedData.filter((e) =>
+		Object.values(e).some(
 			(value) =>
 				typeof value === "string" && normalizeValue(value).includes(normalizeValue(searchTerm))
 		)
 	);
 	console.log("filteredEmployees", filteredData);
+
+	useEffect(() => {
+		setCurrentPage(1); // Réinitialiser à la première page après la recherche
+	}, [searchTerm]);
 
 	//Détermine la position du dernier élément de la page actuelle dans le tableau de données filtrées.
 	const indexOfLastItem = currentPage * itemsPerPage;
@@ -87,7 +96,7 @@ const DataTable = ({ jsonData }) => {
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 	return (
-		<>
+		<div id="datatable-container" data-testid="datatable-container">
 			<div className="SearchSelectContainer">
 				<label htmlFor="itemsPerPage" className="SelectLabel">
 					Show
@@ -125,7 +134,7 @@ const DataTable = ({ jsonData }) => {
 				paginate={paginate}
 				currentPage={currentPage}
 			/>
-		</>
+		</div>
 	);
 };
 
