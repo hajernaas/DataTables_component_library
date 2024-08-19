@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import "./style.css";
 /**
  * Composant affichant une table de données avec des en-têtes triables.
  *

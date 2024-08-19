@@ -1,6 +1,6 @@
 {
 	"name": "datatable-component-library",
-	"version": "1.0.21",
+	"version": "1.0.23",
 	"type": "module",
 	"description": "DataTables npm librairie ",
 	"main": "dist/datatable-component-library.umd.js",
@@ -51,6 +51,7 @@
 		"c8": "^10.1.2",
 		"date-fns": "^3.6.0",
 		"jsdom": "^24.1.0",
+		"prop-types": "^15.8.1",
 		"react-test-renderer": "^18.3.1"
 	},
 	"repository": {

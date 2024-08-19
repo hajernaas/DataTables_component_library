@@ -26,18 +26,17 @@ const Pagination = ({ itemsPerPage, totalItems, paginate, currentPage }) => {
 
 	//Pour ajouter des points de suspension et générer  et calculer les pages à afficher
 	const paginationRange = PaginationRange(currentPage, totalPages, maxPageNumbersToShow);
-	console.log("paginationRange", paginationRange);
 
 	return (
-		<div className="PaginationContainer">
-			<div className="PaginationInfo">
+		<div className="paginationContainer">
+			<div className="paginationInfo">
 				{`Showing ${indexOfFirstItem + 1} to ${Math.min(
 					indexOfLastItem,
 					totalItems
 				)} of ${totalItems} entries`}
 			</div>
 			<nav role="navigation" aria-label="Pagination">
-				<ul className="Pagination">
+				<ul className="pagination">
 					<li>
 						<button
 							onClick={() => paginate(currentPage - 1)}

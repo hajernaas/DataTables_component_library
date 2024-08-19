@@ -1,5 +1,6 @@
 import { parse } from "date-fns";
 
+//Pour vérifier si une chaîne de caractères représente une date valide selon un format donné.
 export const isDate = (date, dateFormat = "dd/MM/yyyy") => {
 	try {
 		const parsedDate = parse(date, dateFormat, new Date());

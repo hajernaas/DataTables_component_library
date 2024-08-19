@@ -1,4 +1,4 @@
-.TableContainer {
+.tableContainer {
 	width: 95%;
 	overflow-x: auto;
 	margin: 20px 0;
@@ -36,13 +36,13 @@ table th:hover {
 
 /*********Search and Select********/
 
-.SearchSelectContainer {
+.searchSelectContainer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 95%;
 }
-.Search {
+.search {
 	margin-bottom: 20px;
 	border: 1px solid #ddd;
 	border-radius: 4px;
@@ -52,7 +52,7 @@ table th:hover {
 	height: 25px;
 }
 
-.Select {
+.select {
 	margin-bottom: 20px;
 	border: 1px solid #ddd;
 	border-radius: 4px;
@@ -60,7 +60,7 @@ table th:hover {
 	height: 25px;
 }
 
-.SelectLabel {
+.selectLabel {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -70,7 +70,7 @@ table th:hover {
 
 /*********Pagination********/
 
-.PaginationContainer {
+.paginationContainer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -79,21 +79,21 @@ table th:hover {
 	width: 95%;
 }
 
-.PaginationInfo {
+.paginationInfo {
 	font-size: 14px;
 }
 
-.Pagination {
+.pagination {
 	display: flex;
 	list-style-type: none;
 	padding: 0;
 }
 
-.Pagination li {
+.pagination li {
 	margin: 0 5px;
 }
 
-.Pagination li button {
+.pagination li button {
 	text-decoration: none;
 	background-color: #f2f2f2;
 
@@ -106,21 +106,21 @@ table th:hover {
 	transition: border-color 0.25s;
 }
 
-.Pagination li button:disabled {
+.pagination li button:disabled {
 	cursor: not-allowed;
 	background-color: #e9ecef;
 }
 
-.Pagination li.active button {
+.pagination li.active button {
 	background-color: #73832c;
 	color: white;
 }
 
-.Pagination li.active button:focus {
+.pagination li.active button:focus {
 	outline: 3px solid #9b6f42;
 }
 
-.Pagination .Ellipsis {
+.pagination .ellipsis {
 	padding: 5px 10px;
 	font-size: 14px;
 	color: #777;
@@ -143,16 +143,16 @@ table th:hover {
 		font-size: 10px;
 	}
 
-	.Search {
+	.search {
 		max-width: 140px;
 	}
 
-	.PaginationContainer {
+	.paginationContainer {
 		flex-wrap: wrap;
 		gap: 2rem;
 	}
 
-	.PaginationInfo {
+	.paginationInfo {
 		font-size: 12px;
 		padding-left: 7px;
 	}

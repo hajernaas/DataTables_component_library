@@ -1,5 +1,4 @@
 import React from "react";
-//Utilisés pour rendre les composants dans un environnement de test et interagir avec les éléments du DOM.
 import { render, screen } from "@testing-library/react";
 import { describe, test, expect } from "vitest";
 import App from "../App";

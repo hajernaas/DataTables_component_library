@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Table from "./Table";
 import Pagination from "./Pagination";
-import "./style.css";
 import { parse } from "date-fns";
 import { isDate } from "./utils";
+import "./style.css";
 
 /**
  * Composant affichant une table des données avec des fonctionnalités de tri et de recherche.
@@ -28,7 +28,6 @@ const DataTable = ({ jsonData }) => {
 				let aValue = a[sortConfig.key];
 				let bValue = b[sortConfig.key];
 
-				// Format de date attendu
 				const dateFormat = "dd/MM/yyyy";
 
 				if (aValue == null) aValue = "";
@@ -58,18 +57,18 @@ const DataTable = ({ jsonData }) => {
 	const normalizeValue = (value) =>
 		value
 			.toLowerCase()
-			.replace(/\s/g, "")
 			// Enlever les accents
 			.normalize("NFD")
 			.replace(/[\u0300-\u036f]/g, "");
 
 	const filteredData = sortedData.filter((e) =>
-		Object.values(e).some(
-			(value) =>
-				typeof value === "string" && normalizeValue(value).includes(normalizeValue(searchTerm))
+		Object.entries(e).some(
+			([key, value]) =>
+				key !== "id" &&
+				typeof value === "string" &&
+				normalizeValue(value).includes(normalizeValue(searchTerm))
 		)
 	);
-	console.log("filteredEmployees", filteredData);
 
 	useEffect(() => {
 		setCurrentPage(1); // Réinitialiser à la première page après la recherche
@@ -95,12 +94,12 @@ const DataTable = ({ jsonData }) => {
 
 	return (
 		<>
-			<div className="SearchSelectContainer">
-				<label htmlFor="itemsPerPage" className="SelectLabel">
+			<div className="searchSelectContainer">
+				<label htmlFor="itemsPerPage" className="selectLabel">
 					Show
 					<select
 						id="itemsPerPage"
-						className="Select"
+						className="select"
 						value={itemsPerPage}
 						onChange={updateItemsPerPage}>
 						<option value={10}>10</option>
@@ -115,14 +114,14 @@ const DataTable = ({ jsonData }) => {
 					type="text"
 					placeholder="Search..."
 					value={searchTerm}
-					className="Search"
+					className="search"
 					onChange={(e) => setSearchTerm(e.target.value)}
 					aria-label="Search data"
 					role="searchbox"
 				/>
 			</div>
 
-			<div className="TableContainer">
+			<div className="tableContainer">
 				<Table jsonData={currentItems} sortConfig={sortConfig} setSortConfig={setSortConfig} />
 			</div>
 
